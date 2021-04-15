@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.PracticalTest01Var05MainActivity">
+
+
+    <Button
+
+        android:id="@+id/navigate_to_secondary_activity_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/navigate_to_secondary_activity" />
+
+    <Button
+        android:id="@+id/top_left_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navigate_to_secondary_activity_button"
+        android:layout_alignParentLeft="true"
+        android:text="TOP LEFT" />
+
+    <Button
+        android:id="@+id/top_right_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navigate_to_secondary_activity_button"
+        android:layout_alignParentRight="true"
+        android:text="TOP RIGHT" />
+
+
+    <Button
+        android:id="@+id/center_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_left_button"
+        android:layout_centerHorizontal="true"
+        android:text="CENTER" />
+
+    <Button
+        android:id="@+id/bottom_left_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/center_button"
+        android:layout_alignParentLeft="true"
+        android:text="BOTTOM LEFT" />
+
+    <Button
+        android:id="@+id/bottom_right_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/center_button"
+        android:layout_alignParentRight="true"
+        android:text="BOTTOM RIGHT" />
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:saveEnabled="false"
+        android:enabled="false"
+        android:inputType="text"
+        android:layout_below="@id/bottom_right_button"
+        />
+</RelativeLayout>
