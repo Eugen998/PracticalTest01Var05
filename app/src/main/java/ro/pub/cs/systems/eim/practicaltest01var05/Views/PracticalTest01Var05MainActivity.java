@@ -1,6 +1,7 @@
 package ro.pub.cs.systems.eim.practicaltest01var05.Views;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -53,6 +54,11 @@ public class PracticalTest01Var05MainActivity extends AppCompatActivity {
 
             } else {
                 //Navigate to secondary activity
+
+                Intent intent = new Intent(getApplicationContext(), PracticalTest01Var05SecondaryActivity.class);
+
+                intent.putExtra("TEXT", editText.getText().toString());
+                startActivityForResult(intent, 1);
             }
 
 
@@ -108,5 +114,17 @@ public class PracticalTest01Var05MainActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), "Number of clicks: " + nrOfClicks, Toast.LENGTH_LONG).show();
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            Toast.makeText(getApplicationContext(), "The activity returned with result " + resultCode, Toast.LENGTH_LONG).show();
+
+            editText.setText(null);
+            nrOfClicks = 0;
+        }
     }
 }
