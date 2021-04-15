@@ -13,12 +13,14 @@ import android.widget.Toast;
 
 import ro.pub.cs.systems.eim.practicaltest01var05.R;
 import ro.pub.cs.systems.eim.practicaltest01var05.General.Constants;
+import ro.pub.cs.systems.eim.practicaltest01var05.Service.PracticalTest01Var05Service;
 
 public class PracticalTest01Var05MainActivity extends AppCompatActivity {
 
     private Button nextActivity,topLeft, topRight, center, bottomLeft, bottomRight;
     private EditText editText;
     private Integer nrOfClicks = 0;
+    private Integer serviceStatus;
 
     //define event listner
     private ButtonCLickListener buttonClickListener = new ButtonCLickListener();
@@ -27,6 +29,16 @@ public class PracticalTest01Var05MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
+            String currentText = editText.getText().toString();
+
+            String[] arrOfStr = currentText.split(", ");
+
+            if(arrOfStr.length > Constants.THRESHOLD) {
+                Intent intent = new Intent(getApplicationContext(), PracticalTest01Var05Service.class);
+                intent.putExtra("ARRAY", currentText);
+                getApplicationContext().startService(intent);
+                serviceStatus = Constants.SERVICE_STARTED;
+            }
 
             if(v.getId() != R.id.navigate_to_secondary_activity_button) {
 
@@ -39,7 +51,6 @@ public class PracticalTest01Var05MainActivity extends AppCompatActivity {
 
                 //Get EditText Text
 
-                String currentText = editText.getText().toString();
 
 //                Concat current string with button text
 
@@ -126,5 +137,12 @@ public class PracticalTest01Var05MainActivity extends AppCompatActivity {
             editText.setText(null);
             nrOfClicks = 0;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        Intent intent = new Intent(this, PracticalTest01Var05Service.class);
+        stopService(intent);
+        super.onDestroy();
     }
 }
